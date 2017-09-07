@@ -365,19 +365,7 @@ Here are the two formulas you will be using:
 $$ \frac{\partial J}{\partial w} = \frac{1}{m}X(A-Y)^T\tag{7}$$
 $$ \frac{\partial J}{\partial b} = \frac{1}{m} \sum_{i=1}^m (a^{(i)}-y^{(i)})\tag{8}$$
 
-
-矩阵化计算公式(7),(8)简单推导过程
-1.首先给出简单的神经网络示意图
-
-为方便说明，先讨论一个样本,由上图及微积分中的链式法则可知：
-$$ \frac{\partial L}{\partial w} =  \frac{\partial L}{\partial a} \frac{\partial a}{\partial z} \frac{\partial z}{\partial w}$$$$ \frac{\partial L}{\partial b} =  \frac{\partial L}{\partial a} \frac{\partial a}{\partial z} \frac{\partial z}{\partial b}$$
-2.已知$L(a,y)=-[ylog(a)+(1-y)log(1-a)]$,很容易算出$$\frac{\partial L}{\partial a} = - \frac{y}{a}+\frac{1-y}{1-a} = \frac{a-y}{a(1-a)} \tag{9}$$
-3.另外$a = \frac{1}{1+e^{-z}}$，则有$$\frac{\partial a}{\partial z} = a(1-a) \tag{10}$$
-4.还有$z = w_1x_1+w_2x_2+b$,故$$\frac{\partial z}{\partial w}=[x_1, x_2] \tag{11}$$
-同理有$\frac{\partial z}{\partial b} = 1 \tag{12}$
-通过(9)~(12)式得出对于单个样本有 $$\begin{align} \frac{\partial L}{\partial w} =\frac{\partial L}{\partial a} \frac{\partial a}{\partial z} \frac{\partial z}{\partial w}  &amp;= \frac{a-y}{a(1-a)} a(1-a)x \\ &amp;= (a-y)x \end{align}$$
-$$\begin{align} \frac{\partial L}{\partial b} =\frac{\partial L}{\partial a} \frac{\partial a}{\partial z} \frac{\partial z}{\partial b}  &amp;= \frac{a-y}{a(1-a)} a(1-a) \\ &amp;= (a-y)\end{align}$$
-对于所有样本则有如上(7),(8)公式所示
+[Link about the deduction of the derivatives](https://github.com/marsggbo/deeplearning.ai_JupyterNotebooks/blob/master/NeuralNetwork%26DeepLearning/Week2/%E7%AC%94%E8%AE%B0%E7%89%88-Logistic%2BRegression%2Bwith%2Ba%2BNeural%2BNetwork%2Bmindset%2Bv3.ipynb)
 
 ```python
 # GRADED FUNCTION: propagate
